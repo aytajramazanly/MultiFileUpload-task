@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Index";
+}
+@model List<BasketVM>
+
+
+
+<div class="container">
+    <div class="row">
+        <table class="table table-success table-striped" id="basketTable">
+            <thead>
+                <tr>
+                    <th scope="col" style="width: 180px">Image</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Count</th>
+                    <th scope="col">Delete</th>
+                    <th scope="col">Total Price</th>
+                </tr>
+            </thead>
+                <partial name="_BasketPartial" model="Model" />
+        </table>
+    </div>
+</div>
+
+

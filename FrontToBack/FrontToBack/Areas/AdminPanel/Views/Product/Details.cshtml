@@ -1,0 +1,19 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card flex-row justify-content-evenly">
+    <img class="card-img-top" src="~/img/@Model.Image" alt="Card image cap" style="max-width: 400px; max-height: 600px">
+    <div class="w-50">
+        <div class="card-body">
+            <h1 class="card-title text-success">@Model.Name</h1>
+            <h5>Description</h5>
+            <p class="card-text text-secondary">@Model.Description</p>
+        </div>
+        <ul class="list-group list-group-flush card-body">
+            <li class="list-group-item bg-warning rounded mb-3">Price:$@Model.Price</li>
+            <li class="list-group-item bg-warning rounded mb-3">Category: @Model.Category.Name</li>
+        </ul>
+    </div>
+</div>

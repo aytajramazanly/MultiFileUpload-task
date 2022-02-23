@@ -1,0 +1,10 @@
+﻿@model List<Product>
+
+@foreach (var item in Model)
+{
+    <li class="d-flex px-3">
+        <a asp-controller="Product" asp-action="Index" asp-route-id="@item.Id">
+            @item.Name @item.Price
+        </a>
+    </li>
+}

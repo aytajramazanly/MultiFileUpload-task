@@ -1,0 +1,58 @@
+﻿@model Product
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-10 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Product</h4>
+                <form class="forms-sample" method="post">
+                    <div class="form-group">
+                        <label asp-for="Name">Name</label>
+                        <input class="form-control text-white " placeholder="Product Name" asp-for="Name">
+                        <span asp-validation-for="Name" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label>Image</label>
+                        <input asp-for="Image" type="file" class="file-upload-default " multiple id="uploadImg">
+                        <div class="input-group col-xs-12">
+                            <input type="text" class="form-control file-upload-info" disabled="" placeholder="Upload Image">
+                            <button class="file-upload-browse btn btn-primary" type="button" id="uploadBtn">Upload</button>
+                        </div>
+                        <span asp-validation-for="Image" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Description">Description</label>
+                        <input class="form-control text-white " placeholder="Description" asp-for="Description">
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Price">Price</label>
+                        <input type="number" class="form-control text-white " placeholder="Price" asp-for="Price">
+                        <span asp-validation-for="Price" class="text-danger"></span>
+                    </div>
+                    <div class="form-group" data-select2-id="7">
+                        <label asp-for="CategoryId">Category</label>
+                        <select asp-for="CategoryId" asp-items="@(new SelectList(ViewBag.Categories, nameof(Category.Id), nameof(Category.Name)))" class="js-example-basic-single select2-hidden-accessible"  style="width:100%" data-select2-id="1" tabindex="-1" aria-hidden="true">
+                            <option>Please select one</option>
+                        </select>
+                        <span asp-validation-for="Category" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <a class="btn btn-dark" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#uploadBtn").click(function myfunction() {
+                 $("#uploadImg").click();
+            })
+        });
+    </script>
+}

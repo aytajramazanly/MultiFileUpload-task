@@ -1,0 +1,51 @@
+﻿@model SliderImage
+@{
+    ViewData["Title"] = "Create";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-10 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title">Create Expert</h4>
+                <form class="forms-sample" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input asp-for="Photos" type="file" class="file-upload-default " multiple id="uploadImg" name="Photos">
+                        <div class="input-group col-xs-12">
+                            <button class="file-upload-browse btn btn-primary" type="button" id="uploadBtn">Upload Photo</button>
+                        </div>
+                        <div class="images">
+                        </div>
+                        <span asp-validation-for="Photos" class="text-danger"></span>
+                    </div>
+                    <button type="submit" class="btn btn-primary me-2">Submit</button>
+                    <a class="btn btn-dark" asp-action="Index">Cancel</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            $("#uploadBtn").click(function myfunction() {
+                 $("#uploadImg").click();
+            })
+            $("#uploadImg").change(function (e) {
+                const { files } = e.target
+
+                for (const file of files) {
+                    const fileReader = new FileReader()
+
+                    fileReader.onloadend = function (e) {
+                        const { result } = e.target
+
+                        document.querySelector(".images").innerHTML += ` <img class="card-img-top imgUploaded" src="${result}" alt="Card image cap" style="max-width: 200px">`
+                    }
+                    fileReader.readAsDataURL(file)
+                }
+            })
+        });
+    </script>
+}
+

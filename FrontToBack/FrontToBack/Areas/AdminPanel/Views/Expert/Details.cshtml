@@ -1,0 +1,17 @@
+﻿@model Expert
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="card flex-column align-items-center m-auto" style="width: fit-content; padding: 50px 100px;">
+    <img class="card-img-top" src="~/img/@Model.Image" alt="Card image cap" style="max-width: 250px">
+    <div>
+        <div class="card-body">
+            <h1 class="card-title text-success m-auto text-center" style="width: fit-content;">@Model.Name @Model.Surname</h1>
+        </div>
+        <ul class="list-group list-group-flush card-body">
+            <li class=" text-center list-group-item bg-warning rounded mb-3">Field:$@Model.Position.Name.ToUpper()</li>
+            <li class="text-center list-group-item bg-warning rounded mb-3">Age: @Model.Age</li>
+        </ul>
+    </div>
+</div>

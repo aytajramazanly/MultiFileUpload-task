@@ -1,0 +1,31 @@
+﻿@model List<BasketVM>
+
+<tbody id="basketBody" data-count="@Html.Raw(ViewBag.totalCount)" data-total="@TempData["totalCart"]">
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr data-id="@i">
+            <td>
+                <img src="~/img/@Model[i].Image" alt="" class="w-100">
+            </td>
+            <td>@Model[i].Name</td>
+            <td id="price">@Model[i].Price</td>
+            <td>
+                <a class="changeCount display-inline-block" data-operation="-" data-id="@Model[i].Id">
+                    <i class="fa-solid fa-minus" id="decreaseCount"></i>
+                </a>
+                <span id="count"> @Model[i].Count</span>
+                <a class="changeCount" data-operation="+" data-id="@Model[i].Id">
+                    <i class="fa-solid fa-plus" id="increaseCount"></i>
+                </a>
+            </td>
+            <td>
+                <div>
+                    <a id="deleteProductFromBasket" data-id="@Model[i].Id" style="cursor: pointer">
+                        <span style="color: red">Delete</span>
+                    </a>
+                </div>
+            </td>
+            <td>@Model[i].TotalPrice </td>
+        </tr>
+    }
+</tbody>
